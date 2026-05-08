@@ -5,16 +5,19 @@
 <title>Mi primera web</title>
 </head>
 <body>
-  <form action="/formulario">
+<form action="/formulario" method="POST">
 <label for="nombre">Nombre</label>
-<input type="text" id="nombre" name="nombre">
+<input value="chanchito" type="text" id="nombre">
 <br>
 <label for="apellido">Apellido</label>
-<input type="text" id="apellido" name="apellido">
+<input value="feliz" type="text" id="apellido">
 <br>
 <label for="comentario">Comentario</label>
 <textarea cols="50" rows="10" id="comentario"></textarea>
-<input type="submit" />
+<br>
+<button type="button">Tipo botón</button>
+<button type="reset">Tipo reset</button>
+<button type="submit">Tipo submit</button>
 </form>
 <h1>Mi primer heading</h1>
 <h2>Mi segundo heading</h2>
@@ -27,10 +30,12 @@
     <hr>
     <h2>Chanchito felipe</h2>
     <p>
-    Este texto es <span style="color: blue;">y es para mostrar</span><br><br>
+    Este texto es mucho mas largo <span style="color: blue;">y es para mostrar</span><br><br>
     la etiqueta de span!
     </p>
     <!-- este texto es un comentario y no va a aparecer en el explorador -->
-    <a target="_blank" href="https://www.google.com/"></a>
+  <a target="_blank" href="https://www.google.com/">
+<img src="https://www.rutaalacafe.com/vaso-de-cafe-alex.jpg" alt="Vaso de café Alex">
+</a>
 </body>
 </html>
