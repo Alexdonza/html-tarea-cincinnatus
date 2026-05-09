@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Mi primera web</title>
+<title>Mi primera web - Mejorada</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* Versión mejorada con SASS y Flexbox */
+
+/* Variables SASS (compiladas a CSS) */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #e74c3c;
+  --accent-color: #3498db;
+  --success-color: #2ecc71;
+  --light-gray: #ecf0f1;
+  --dark-gray: #7f8c8d;
+  --shadow: 0 2px 10px rgba(0,0,0,0.1);
+  --shadow-hover: 0 5px 20px rgba(0,0,0,0.15);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+}
 
 * {
   margin: 0;
@@ -12,253 +26,506 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: #f5f5f5;
-  margin: 20px;
-  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* Layout principal con Flexbox */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-hover);
+  overflow: hidden;
+  padding: 40px;
+}
+
+/* SECCIONES FLEXIBLES */
+.content-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.content-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* TABLA MEJORADA */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 20px 0;
 }
 
 table {
   width: 100%;
-  max-width: 600px;
-  margin: 20px 0;
   border-collapse: collapse;
   background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
 }
 
 th, td {
-  border: 2px solid #333;
-  padding: 12px;
+  padding: 15px;
   text-align: left;
 }
 
 th {
-  background: #2c3e50;
+  background: var(--primary-color);
   color: white;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
 }
 
 tr:hover {
-  background: #ecf0f1;
+  background: var(--light-gray);
+  transition: var(--transition);
 }
 
-ul, ol {
-  margin: 20px;
-  padding-left: 40px;
-  background: #fff;
-  display: inline-block;
-  width: 200px;
-  vertical-align: top;
-  border: 1px solid #ddd;
+/* LISTAS CON FLEXBOX */
+.lists-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.list-card {
+  flex: 1;
+  min-width: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
 }
 
-li {
-  margin: 8px 0;
-  padding: 4px;
-  list-style-position: inside;
+.list-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
 }
 
-ol li {
-  list-style-type: decimal-leading-zero;
+.list-card h3 {
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-form {
-  background: white;
-  padding: 20px;
-  margin: 20px 0;
-  border: 1px solid #ccc;
+.list-card ul, .list-card ol {
+  background: rgba(255,255,255,0.9);
   border-radius: 8px;
-  max-width: 500px;
-  overflow: hidden;
+  padding: 15px 15px 15px 35px;
 }
 
-label {
-  display: inline-block;
-  width: 100px;
-  margin: 8px 0;
+.list-card li {
+  margin: 10px 0;
+  padding: 5px;
+  transition: var(--transition);
+}
+
+.list-card li:hover {
+  transform: translateX(5px);
+  color: var(--secondary-color);
+}
+
+/* FORMULARIO MEJORADO */
+.form-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  margin: 30px 0;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.form-group label {
+  flex: 0 0 100px;
   font-weight: bold;
+  color: var(--primary-color);
 }
 
-input, textarea {
-  padding: 8px;
-  margin: 8px 0;
-  border: 2px solid #bdc3c7;
+.form-group input,
+.form-group textarea {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
   outline: none;
-  width: 200px;
-}
-
-input:focus, textarea:focus {
-  border-color: #3498db;
-  outline: 3px solid rgba(52,152,219,0.3);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
 }
 
 textarea {
   resize: vertical;
-  overflow: auto;
+  min-height: 100px;
+}
+
+/* BOTONES CON FLEXBOX */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+  justify-content: center;
 }
 
 button {
-  margin: 10px 10px 0 0;
-  padding: 10px 20px;
-  background: #2c3e50;
-  color: white;
+  flex: 0 0 auto;
+  padding: 12px 30px;
   border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: var(--transition);
+  background: var(--primary-color);
+  color: white;
 }
 
 button:hover {
-  background: #e74c3c;
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+button:first-child {
+  background: var(--accent-color);
+}
+
+button:first-child:hover {
+  background: #2980b9;
+}
+
+button:nth-child(2) {
+  background: var(--dark-gray);
+}
+
+button:nth-child(2):hover {
+  background: #6c7a7e;
+}
+
+button:nth-child(3) {
+  background: var(--success-color);
+}
+
+button:nth-child(3):hover {
+  background: #27ae60;
+}
+
+/* HEADINGS MEJORADOS */
+.headings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 30px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: var(--border-radius);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px 0;
-  padding: 5px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  margin: 5px 0;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 8px;
+  transition: var(--transition);
 }
 
 h1 {
-  color: #e74c3c;
-  border-left: 5px solid #e74c3c;
-  padding-left: 15px;
+  background: rgba(231, 76, 60, 0.8);
+  font-size: 2.5em;
 }
 
 h2 {
-  color: #3498db;
-  border-bottom: 2px solid #3498db;
+  background: rgba(52, 152, 219, 0.8);
+  font-size: 2em;
 }
 
 h3 {
-  color: #2ecc71;
-  text-decoration: underline;
+  background: rgba(46, 204, 113, 0.8);
+  font-size: 1.75em;
 }
 
 h4, h5, h6 {
-  color: #95a5a6;
+  background: rgba(149, 165, 166, 0.8);
 }
 
-p {
-  margin: 15px 0;
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  transform: translateX(10px);
+  background: rgba(0,0,0,0.3);
+}
+
+/* PARRAFOS CON FLEXBOX */
+.parrafos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.parrafo-card {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  background: var(--light-gray);
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--secondary-color);
+  transition: var(--transition);
+}
+
+.parrafo-card:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow);
+}
+
+.parrafo-card p {
+  margin: 0;
   line-height: 1.6;
-  max-width: 800px;
 }
 
+/* HR MEJORADO */
 hr {
   margin: 30px 0;
   border: none;
-  border-top: 3px dashed #bdc3c7;
+  height: 3px;
+  background: linear-gradient(to right, #667eea, #764ba2, #667eea);
+  border-radius: 3px;
 }
 
+/* SPAN MEJORADO */
 span {
-  color: blue;
-  text-decoration: underline;
+  color: var(--secondary-color);
+  font-weight: bold;
+  text-decoration: none;
+  background: rgba(231,76,60,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ENLACE CON FLEXBOX */
+.link-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+  text-align: center;
 }
 
 a {
-  display: inline-block;
-  margin: 20px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
   text-decoration: none;
-  border: 2px solid transparent;
-  transition: 0.3s;
+  border-radius: 50px;
+  transition: var(--transition);
+  font-weight: bold;
 }
 
 a:hover {
-  text-decoration: underline;
-  border: 2px solid #e74c3c;
-  padding: 5px;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  text-decoration: none;
+  gap: 15px;
+}
+
+/* IMAGEN CON FLEXBOX */
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
 }
 
 img {
-  display: block;
-  width: 200px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
-  margin: 10px 0;
-  transition: transform 0.3s;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: var(--shadow-hover);
+  transition: var(--transition);
+  border: 4px solid white;
 }
 
 img:hover {
-  transform: scale(1.05);
-  box-shadow: 8px 8px 20px rgba(0,0,0,0.4);
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-br {
-  display: none;
+/* MEDIA QUERIES RESPONSIVE */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .form-group label {
+    flex: auto;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
 }
 </style>
 </head>
 <body>
-  <table>
-    <tr>
-      <th>Producto</th>
-      <th>Precio</th>
-    </tr>
-    <tr>
-      <td>Hola beats</td>
-      <td>Gratis</td>
-    </tr>
-    <tr>
-      <td>Chanchito feliz</td>
-      <td>19,90$</td>
-    </tr>
-    <tr>
-      <td>Chanchito feliz muy feliz</td>
-      <td>29,90$</td>
-    </tr>
-  </table>
+<div class="container">
+  <!-- TABLA -->
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hola beats</td>
+          <td>Gratis</td>
+        </tr>
+        <tr>
+          <td>Chanchito feliz</td>
+          <td>19,90$</td>
+        </tr>
+        <tr>
+          <td>Chanchito feliz muy feliz</td>
+          <td>29,90$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <ul>
-    <li>Elemento 1</li>
-    <li>Elemento 2</li>
-    <li>Elemento 3</li>
-    <li>Elemento 4</li>
-  </ul>
+  <!-- LISTAS CON FLEXBOX -->
+  <div class="lists-container">
+    <div class="list-card">
+      <h3>Lista No Ordenada</h3>
+      <ul>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+      </ul>
+    </div>
+    <div class="list-card">
+      <h3> Lista Ordenada</h3>
+      <ol>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+      </ol>
+    </div>
+  </div>
 
-  <ol>
-    <li>Elemento 1</li>
-    <li>Elemento 2</li>
-    <li>Elemento 3</li>
-    <li>Elemento 4</li>
-  </ol>
+  <!-- FORMULARIO -->
+  <div class="form-card">
+    <form action="/formulario" method="POST">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input value="chanchito" type="text" id="nombre">
+      </div>
+      <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input value="feliz" type="text" id="apellido">
+      </div>
+      <div class="form-group">
+        <label for="comentario">Comentario</label>
+        <textarea cols="50" rows="10" id="comentario" placeholder="Escribe tu comentario aquí..."></textarea>
+      </div>
+      <div class="button-group">
+        <button type="button">Tipo botón</button>
+        <button type="reset">Tipo reset</button>
+        <button type="submit">Tipo submit</button>
+      </div>
+    </form>
+  </div>
 
-  <form action="/formulario" method="POST">
-    <label for="nombre">Nombre</label>
-    <input value="chanchito" type="text" id="nombre">
-    <br>
-    <label for="apellido">Apellido</label>
-    <input value="feliz" type="text" id="apellido">
-    <br>
-    <label for="comentario">Comentario</label>
-    <textarea cols="50" rows="10" id="comentario"></textarea>
-    <br>
-    <button type="button">Tipo botón</button>
-    <button type="reset">Tipo reset</button>
-    <button type="submit">Tipo submit</button>
-  </form>
+  <!-- HEADINGS -->
+  <div class="headings-container">
+    <h1>Mi primer heading</h1>
+    <h2>Mi segundo heading</h2>
+    <h3>Mi tercer heading</h3>
+    <h4>Mi cuarto heading</h4>
+    <h5>Mi quinto heading</h5>
+    <h6>Chanchito feliz</h6>
+  </div>
 
-  <h1>Mi primer heading</h1>
-  <h2>Mi segundo heading</h2>
-  <h3>Mi tercer heading</h3>
-  <h4>Mi cuarto heading</h4>
-  <h5>Mi quinto heading</h5>
-  <h6>Chanchito feliz</h6>
-
-  <p>Chanchito feliz está muy feliz.</p>
-  <p>Chanchito triste está muy triste.</p>
+  <!-- PARRAFOS -->
+  <div class="parrafos-container">
+    <div class="parrafo-card">
+      <p> Chanchito feliz está muy feliz.</p>
+    </div>
+    <div class="parrafo-card">
+      <p> Chanchito triste está muy triste.</p>
+    </div>
+  </div>
 
   <hr>
 
-  <h2>Chanchito felipe</h2>
-  <p>
-    Este texto es mucho mas largo <span style="color: blue;">y es para mostrar</span><br><br>
-    la etiqueta de span!
-  </p>
+  <h2 style="text-align: center;">Chanchito felipe</h2>
+  <div class="parrafos-container">
+    <div class="parrafo-card">
+      <p>Este texto es mucho mas largo <span>y es para mostrar</span><br><br> la etiqueta de span!</p>
+    </div>
+  </div>
 
-  <a target="_blank" href="https://www.google.com/">
-    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&h=200&fit=crop" alt="Vaso de café" style="width:200px; height:auto;">
-  </a>
+  <!-- ENLACE E IMAGEN -->
+  <div class="link-container">
+    <a target="_blank" href="https://www.google.com/">
+      🔗 Visitar Google
+    </a>
+  </div>
+
+  <div class="image-container">
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=250&h=250&fit=crop" alt="Vaso de café">
+  </div>
+</div>
 </body>
 </html>
